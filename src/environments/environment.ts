@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/github',
+  apiUrl: 'https://fulltimeforce-github-api.onrender.com/github',
 };
