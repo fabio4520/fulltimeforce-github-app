@@ -16,6 +16,8 @@ export class ListCommitsComponent {
   repo: string = '';
   submited: boolean = false;
   loading: boolean = false;
+  isError: boolean = false;
+  error: string = '';
 
   constructor(private nestApiService: NestApiService, private dialog: MatDialog) { }
 
@@ -37,6 +39,13 @@ export class ListCommitsComponent {
       const inputArray = input.split('/');
       this.owner = inputArray[3];
       this.repo = inputArray[4];
+
+      if (!this.owner || !this.repo) {
+        this.isError = true;
+        this.error = 'Invalid link. Follow this format: https://github.com/OWNER/REPONAME';
+        return;
+      }
+
       this.fetchCommits();
     });
   }
@@ -45,15 +54,24 @@ export class ListCommitsComponent {
     this.submited = false;
     this.loading = true;
     this.nestApiService.getListCommits(this.owner, this.repo).subscribe(
+      // My response will be an object with success and commits properties
       (data: any) => {
-        this.dates = Object.keys(data);
-        this.commits = data;
-        this.submited = true;
-        this.loading = false;
+        if (data.success) {
+          this.dates = Object.keys(data);
+          this.commits = data;
+          this.submited = true;
+          this.loading = false;
+        } else {
+          this.isError = true;
+          this.error = data.message;
+          this.loading = false;
+        }
       },
       (error) => {
         console.error(error);
         this.loading = false;
+        this.isError = true;
+        this.error = error.message;
       }
     );
   }

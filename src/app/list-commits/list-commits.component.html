@@ -2,6 +2,11 @@
   <mat-spinner ></mat-spinner>
 </div>
 
+<!-- Display error -->
+<div *ngIf="error" class="mx-auto flex justify-center items-center w-full h-full">
+  <h1 class="text-red-500">{{error}}</h1>
+</div>
+
 <div *ngIf="submited && !loading" class="container mx-auto">
   <ol>
     <li *ngFor="let date of (dates)">
