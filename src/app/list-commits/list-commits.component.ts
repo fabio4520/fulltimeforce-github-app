@@ -8,7 +8,8 @@ import { NestApiService } from '../services/nest-api.service';
 })
 export class ListCommitsComponent {
   title = 'fulltimeforce-app';
-  commits: { date: string, commits: any[] }[] = [];
+  commits: any = {};
+  dates: string[] = [];
   owner: string = '';
   repo: string = '';
 
@@ -19,6 +20,7 @@ export class ListCommitsComponent {
     this.repo = 'fulltimeforce-app'
     this.nestApiService.getListCommits(this.owner, this.repo).subscribe(
       (data: any) => {
+        this.dates = Object.keys(data);
         this.commits = data;
       },
       (error) => {

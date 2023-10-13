@@ -9,8 +9,6 @@ import { Component, Input } from '@angular/core';
 export class CommitComponent {
   @Input() commitData: any;
 
-  idCommit: string = '';
-  shortCommit: string = '';
   commit: any = {};
   author: any = {};
 
@@ -21,9 +19,5 @@ export class CommitComponent {
     this.author = this.commitData.author;
     this.commit.date = this.datePipe.transform(this.commit.author.date, 'MMM d, yyyy');
   }
-
-  // copyToClipboard() {
-  //   navigator.clipboard.writeText(this.idCommit);
-  // }
 
 }
