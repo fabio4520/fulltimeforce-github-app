@@ -6,7 +6,7 @@ This is a Dockerized Angular application that uses Nginx to serve the static fil
 
 Follow these instructions to get the project up and running in your local development environment.
 
-This app has been deployed and you can find it in the following link
+This app has been deployed and you can find it in the following link https://fulltimeforcegithub.web.app
 
 ### Prerequisites
 
