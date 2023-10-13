@@ -15,6 +15,7 @@ export class ListCommitsComponent {
   owner: string = '';
   repo: string = '';
   submited: boolean = false;
+  loading: boolean = false;
 
   constructor(private nestApiService: NestApiService, private dialog: MatDialog) { }
 
@@ -41,14 +42,18 @@ export class ListCommitsComponent {
   }
 
   fetchCommits() {
+    this.submited = false;
+    this.loading = true;
     this.nestApiService.getListCommits(this.owner, this.repo).subscribe(
       (data: any) => {
         this.dates = Object.keys(data);
         this.commits = data;
         this.submited = true;
+        this.loading = false;
       },
       (error) => {
         console.error(error);
+        this.loading = false;
       }
     );
   }
