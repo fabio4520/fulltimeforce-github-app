@@ -1,16 +1,16 @@
-<div class="mt-3 mr-3 ml-3 commit border rounded-lg p-3 hover:bg-gray-200 hover:cursor-pointer">
+<div class="mt-3 mr-3 ml-3 commit border rounded-lg p-3 hover:bg-gray-400 hover:cursor-pointer">
   <ol>
     <li class="flex justify-between">
       <div>
         <p class="mb-1">
-          <a class="text-bold" href="{{commit?.url}}">{{commit?.message}}</a>
+          <a class="text-bold" href={{commit?.url}}>{{commit?.message}}</a>
         </p>
         <div class="flex items-center">
           <!-- Avatar -->
           <div class="flex-self-start">
             <div class="">
-              <a class="w-20 h-20" href="{{author?.url}}">
-                <img src="{{author?.avatar_url}}" width="20" height="20" alt="{{author?.login}}" class="rounded-full">
+              <a class="w-20 h-20" href={{author?.url}}>
+                <img src={{author?.avatar_url}} width="20" height="20" alt={{author?.login}} class="rounded-full">
               </a>
             </div>
           </div>
