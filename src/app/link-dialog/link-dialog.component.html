@@ -1,0 +1,9 @@
+<div class="flex flex-col items-center justify-around h-full">
+  <div class="w-full border border-2 p-2">
+    <input type="text" class="w-full" placeholder="Enter URL of repository in this format: https://github.com/fabio4520/coding-interview-university" [(ngModel)]="url" name="url" (keyup.enter)="closeDialog(url)" required>
+  </div>
+
+  <div class="">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" [disabled]="!url" (click)="closeDialog(url)">Submit</button>
+  </div>
+</div>

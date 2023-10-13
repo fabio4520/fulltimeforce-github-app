@@ -9,19 +9,30 @@ import { MatIconModule } from '@angular/material/icon';
 import { ListCommitsComponent } from './list-commits/list-commits.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { LinkDialogComponent } from './link-dialog/link-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CommitComponent,
-    ListCommitsComponent
+    ListCommitsComponent,
+    LinkDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+    FormsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
