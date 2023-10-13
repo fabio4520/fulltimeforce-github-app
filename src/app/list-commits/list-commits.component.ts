@@ -57,8 +57,8 @@ export class ListCommitsComponent {
       // My response will be an object with success and commits properties
       (data: any) => {
         if (data.success) {
-          this.dates = Object.keys(data);
-          this.commits = data;
+          this.dates = Object.keys(data.commits);
+          this.commits = data.commits;
           this.submited = true;
           this.loading = false;
         } else {
