@@ -23,25 +23,29 @@ Before you begin, make sure you have the following software installed on your ma
    cd fulltimeforce-github-app
    ```
 
-2. Build the Docker image for the Angular app:
+2. There are two ways for building the image and execute the container. It will dependend if you want to start in dev mode or in prod mode. 
+The difference is that when you start in dev mode, you need to run the api repository, so the frontend can comunicate with the backend in your local machine.
+In prod mode the front will use the url of the backend that is deployed in live preview.
+
+ Development mode
 
    ```bash
-   docker build -t fulltimeforceapp .
+   docker build -t fulltimeforceapp --build-arg build_mode=development .
+   docker run -p 4200:80 fulltimeforceapp
    ```
 
-### Running the App
+Production mode
 
-Once the Docker image is built, you can run a Docker container to start the Angular app.
+   ```bash
+   docker build -t fulltimeforceapp --build-arg build_mode=production .
+   docker run -p 8080:80 fulltimeforceapp
+   ```
 
-```bash
-docker run -d -p 8080:80 fulltimeforceapp
-```
-
-This command maps port 8080 on your host machine to port 80 inside the Docker container. Adjust the port numbers as needed.
+These command maps port you declare on your command line. Adjust the port numbers as needed.
 
 ### Accessing the App
 
-You can now access the Angular app in your web browser by navigating to [http://localhost:8080](http://localhost:8080). If you mapped a different port, use that port number instead.
+You can now access the Angular app in your web browser by navigating to [http://localhost:8080](http://localhost:8080) (in prod mode) or [http://localhost:4200](http://localhost:4200) (in dev mode). If you mapped a different port, use that port number instead.
 
 # Images
 ![Alt text](image.png)
@@ -50,3 +54,13 @@ You can now access the Angular app in your web browser by navigating to [http://
 
 ![Alt text](image-3.png)
 ![Alt text](image-4.png)
+
+## Dev mode using docker
+![Alt text](image-7.png)
+![Alt text](image-6.png)
+![Alt text](image-5.png)
+
+## Prod mod using docker
+![Alt text](image-8.png)
+![Alt text](image-10.png)
+![Alt text](image-9.png)
