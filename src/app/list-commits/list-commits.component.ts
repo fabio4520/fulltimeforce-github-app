@@ -18,6 +18,7 @@ export class ListCommitsComponent {
   loading: boolean = false;
   isError: boolean = false;
   error: string = '';
+  per_page: number = 30;
 
   constructor(private nestApiService: NestApiService, private dialog: MatDialog) { }
 
@@ -53,7 +54,7 @@ export class ListCommitsComponent {
   fetchCommits() {
     this.submited = false;
     this.loading = true;
-    this.nestApiService.getListCommits(this.owner, this.repo).subscribe(
+    this.nestApiService.getListCommits(this.owner, this.repo, this.per_page).subscribe(
       // My response will be an object with success and commits properties
       (data: any) => {
         if (data.success) {
@@ -66,14 +67,13 @@ export class ListCommitsComponent {
           this.error = data.message;
           this.loading = false;
         }
-      },
-      (error) => {
-        console.error(error);
-        this.loading = false;
-        this.isError = true;
-        this.error = error.message;
       }
     );
   }
 
+  setPerPage(per_page: number) {
+    console.log(per_page);
+    this.per_page = per_page;
+    this.fetchCommits();
+  }
 }

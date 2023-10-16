@@ -50,8 +50,9 @@ You can now access the Angular app in your web browser by navigating to [http://
 # Images
 ![Alt text](image.png)
 ![Alt text](image-1.png)
-![Alt text](image-2.png)
+![Alt text](image-11.png)
 
+## Handle error
 ![Alt text](image-3.png)
 ![Alt text](image-4.png)
 

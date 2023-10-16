@@ -11,8 +11,8 @@ export class NestApiService {
 
   constructor(private http: HttpClient) { }
 
-  getListCommits(owner: string, repo: string) {
-    return this.http.get(`${this.baseUrl}/repos/${owner}/${repo}/commits`);
+  getListCommits(owner: string, repo: string, per_page: number = 30) {
+    return this.http.get(`${this.baseUrl}/repos/${owner}/${repo}/commits?per_page=${per_page}`);
   }
 }
 

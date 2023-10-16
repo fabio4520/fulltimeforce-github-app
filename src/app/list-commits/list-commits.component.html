@@ -1,24 +1,42 @@
-<div *ngIf="loading" class="mx-auto flex justify-center items-center w-full h-full">
-  <mat-spinner ></mat-spinner>
-</div>
-
-<!-- Display error -->
-<div *ngIf="error" class="mx-auto flex justify-center items-center w-full h-full">
-  <h1 class="text-red-500">{{error}}</h1>
-</div>
-
-<div *ngIf="submited && !loading" class="container mx-auto">
-  <ol>
-    <li *ngFor="let date of (dates)">
-      <div class="flex gap-2">
-        <div class="mt-2">
-          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-commit">
-            <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
-          </svg>
+<div class="container mx-auto mt-4">
+  <div *ngIf="loading" class="mx-auto flex justify-center items-center w-full h-full">
+    <mat-spinner ></mat-spinner>
+  </div>
+  
+  <!-- Display error -->
+  <div *ngIf="error" class="mx-auto flex justify-center items-center w-full h-full">
+    <h1 class="text-red-500">{{error}}</h1>
+  </div>
+  
+  <!-- Select per_page -->
+  <div *ngIf="submited && !loading && !error" class="flex justify-center items-center w-75 gap-4">
+    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose the maximum number of commits</label>
+    <select 
+    id="countries" 
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    (change)="setPerPage(per_page)" 
+    [(ngModel)]="per_page"
+    >
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </select>
+  </div>
+  
+  <div *ngIf="submited && !loading && !error" class="">
+    <ol>
+      <li *ngFor="let date of (dates)">
+        <div class="flex gap-2">
+          <div class="mt-2">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-commit">
+              <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z"></path>
+            </svg>
+          </div>
+          <h2 class=" text-gray-400">Commits on {{date}}</h2>
         </div>
-        <h2 class=" text-gray-400">Commits on {{date}}</h2>
-      </div>
-      <app-commit [commitData]="commit" *ngFor="let commit of commits[date]"></app-commit>
-    </li>
-  </ol>
+        <app-commit [commitData]="commit" *ngFor="let commit of commits[date]"></app-commit>
+      </li>
+    </ol>
+  </div>
 </div>
